@@ -5,8 +5,8 @@
    Tutorial 11
    Case Problem 1
 
-   Author: 
-   Date:   
+   Author: Kevin Ramirez
+   Date:   3-11-20
    
    Filename: bw_review.js
 	
@@ -34,10 +34,33 @@
 
 */
 
+window.onload = init;
 
+//defines the event listener
+function init(){
+   var stars = document.querySelectorAll("span#stars img");
 
-  
+   for(var i = 0; i < stars.length; i++){
+      stars[i].style.cursor = "pointer";
+      stars[i].addEventListener("mouseenter", lightStars);
+   }
+   stars[i].addEventListener("keyup", updateCount)
+}  
 
+//colors a star when the user hovers over it
+function lightStars(e){
+   var starNumber = e.target.alt;
+
+   var stars = document.querySelectorAll("span#stars img");
+   
+   for(var i = 0; i < starNumber; i++){
+      stars[i].src = "bw_star2.png";
+   }
+   for(var i = starNumber; i < 5 ; i++){
+      stars[i].src = "bw_star.png";
+   }
+   document.getElementById("rating").value = starNumber + " stars";
+}
 
   
   
