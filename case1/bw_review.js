@@ -33,12 +33,13 @@
       within textStr
 
 */
-
+//runs the init function when the browser first loads in
 window.onload = init();
 
 function init(){
    var stars = document.querySelectorAll("span#stars img");
 
+   //loops through the collection of stars that will change the cursor to pointer and activates the lightStars function when clicked
    for(var i=0; i<stars.length; i++){
       stars[i].style.cursor = "pointer";
       stars[i].addEventListener("mouseenter", lightStars)
@@ -51,18 +52,19 @@ function lightStars(e){
    var starNumber = e.target.alt;
    var stars = document.querySelectorAll("span#stars img");
 
-   for(var i=0; i<starNumber.value; i++){
-      document.getElementsByTagName("img")[0].setAttribute("src", "bw_star2.png");
+   for(var i=0; i<starNumber; i++){
+      stars[i].src = "bw_star2.png";
    }
 
-   for(var i=0; starNumber.value<5; i++){
-      document.getElementsByTagName("img")[0].setAttribute("src", "bw_star.png");
-      document.getElementById("rating")[0].setAttribute("value", starNumber.value + "stars");
+   for(var j=starNumber; j<5; j++){
+      stars[i].src = "bw_star.png";
    }
+   document.getElementById("rating").value = (starNumber + " stars");
 
+   //adds event listener that will run the turnOffStars function when the mouse leaves the stars
    e.target.addEventListener("mouseleave", turnOffStars);
-
-   e.target.addEventListener("mouseleave", 
+   //adds event listener that will turn off the previous event listener when the mouse clicks onto a specific star
+   e.target.addEventListener("click", 
       function(){
          e.target.removeEventListener("mouseleave", turnOffStars);
       })
@@ -72,25 +74,29 @@ function turnOffStars(){
    var stars = document.querySelectorAll("span#stars img");
 
    for(var i=0; i<stars.length; i++){
-      document.getElementsByTagName("img")[0].setAttribute("src", "bw_star.png");
-      document.getElementById("rating").setAttribute("value", " ");
+      stars[i].src = "bw_star.png";
    }
+   document.getElementById("rating").value = "";
 }
 
 function updateCount(){
-   var commentText = document.getElementById("comment").innerHTML;
+   var commentText = document.getElementById("comment").value;
+   //the amount of characters in the comment text area
    var charCount = countCharacters(commentText);
-   var wordCountBox = document.getElementById("wordCount").innerHTML;
+   //the input box of wordCount
+   var wordCountBox = document.getElementById("wordCount");
 
-   wordCountBox = charCount/1000;
+   wordCountBox.value = charCount + "/1000";
 
+   //if the number of characters exceeds 1000 it will change font color to white and bg color to red
    if(charCount > 1000){
-      document.getElementById("wordCount").style.color = "white";
-      document.getElementById("wordCount").style.backgroundColor = "red";
+      wordCountBox.style.color = "white";
+      wordCountBox.style.backgroundColor = "red";
    }
+   //default font color black and bg color to white
    else{
-      document.getElementById("wordCount").style.color = "black";
-      document.getElementById("wordCount").style.backgroundColor = "white";
+      wordCountBox.style.color = "black";
+      wordCountBox.style.backgroundColor = "white";
    }
 }
   
