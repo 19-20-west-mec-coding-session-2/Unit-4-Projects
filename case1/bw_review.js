@@ -81,7 +81,7 @@ function turnOffStars(){
 
 function updateCount(){
    var commentText = document.getElementById("comment").value;
-   //the amount of characters in the comment text area
+   //the amount of characters in the comment text area 
    var charCount = countCharacters(commentText);
    //the input box of wordCount
    var wordCountBox = document.getElementById("wordCount");
