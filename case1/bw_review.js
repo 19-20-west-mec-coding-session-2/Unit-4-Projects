@@ -64,11 +64,35 @@ function lightStars(e){
 
    e.target.addEventListener("mouseleave", 
       function(){
-         e.target.removeEventListener(turnOffStars);
+         e.target.removeEventListener("mouseleave", turnOffStars);
       })
 }
 
+function turnOffStars(){
+   var stars = document.querySelectorAll("span#stars img");
 
+   for(var i=0; i<stars.length; i++){
+      document.getElementsByTagName("img")[0].setAttribute("src", "bw_star.png");
+      document.getElementById("rating").setAttribute("value", " ");
+   }
+}
+
+function updateCount(){
+   var commentText = document.getElementById("comment").innerHTML;
+   var charCount = countCharacters(commentText);
+   var wordCountBox = document.getElementById("wordCount").innerHTML;
+
+   wordCountBox = charCount/1000;
+
+   if(charCount > 1000){
+      document.getElementById("wordCount").style.color = "white";
+      document.getElementById("wordCount").style.backgroundColor = "red";
+   }
+   else{
+      document.getElementById("wordCount").style.color = "black";
+      document.getElementById("wordCount").style.backgroundColor = "white";
+   }
+}
   
   
   
