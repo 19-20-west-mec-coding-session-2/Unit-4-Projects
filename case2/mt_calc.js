@@ -5,8 +5,8 @@
    Tutorial 11
    Case Problem 2
 
-   Author: 
-   Date:   
+   Author: Kevin Ramirez
+   Date:   3-12-20
    
    Filename: mt_calc.js
 	
@@ -33,9 +33,21 @@
 
 */
 
+//Loads the browser calc
+function init(){
+   var calcButtons = document.getElementsByClassName("calcButton");
 
-
-
+   for(var i = 0; i < calcButtons.length; i++){
+      calcButtons[i].addEventListener("click", buttonClick);
+   }
+   document.getElementById("calcWindow").addEventListener("keydown", calcKeys);
+}
+//changes what appears in the calc window
+function buttonClick(e){
+   var calcValue = document.getElementById("calcWindow").value ;
+   var calcDecimal = document.getElementById("decimals").value ; 
+   var buttonValue = 
+}
 
 
 /* ===================================================================== */
