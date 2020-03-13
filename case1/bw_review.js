@@ -44,7 +44,7 @@ function init(){
       stars[i].style.cursor = "pointer";
       stars[i].addEventListener("mouseenter", lightStars);
    }
-   stars[i].addEventListener("keyup", updateCount)
+   document.getElementById("comment").addEventListener("keyup", updateCount)
 }  
 
 //colors a star when the user hovers over it
@@ -60,10 +60,38 @@ function lightStars(e){
       stars[i].src = "bw_star.png";
    }
    document.getElementById("rating").value = starNumber + " stars";
+   e.target.addEventListener("mouseleave", turnOffStars);
+   e.target.addEventListener("click", 
+   function(){
+      e.target.removeEventListener("mouseleave", turnOffStars);
+   })
 }
+//unlight stars
+function turnOffStars(){
+   var stars = document.querySelectorAll("span#stars img");
 
-  
-  
+   for(var i = 0; i < stars.length ; i++){
+      stars[i].src = "bw_star.png";
+   }
+   document.getElementById("rating").innerHTML = "";
+}  
+ 
+function updateCount(){
+   var commentText = document.getElementById("comment").value;
+   var charCount = countCharacters(commentText);
+   var wordCountBox = document.getElementById("wordCount");
+
+   wordCountBox.value = charCount+ "/1000";
+
+   if(charCount > 1000){
+      wordCountBox.style.color = "white";
+      wordCountBox.style.backgroundColor = "red";
+   }
+   else{
+      wordCountBox.style.color = "black";
+      wordCountBox.style.backgroundColor = "white";
+   }
+}
   
 /*=================================================================*/
 
