@@ -7,8 +7,8 @@
    Wordsearch Game Script
    
    Filename: kg_search.js
-   Author: 
-   Date:   
+   Author: Kevin Ramirez
+   Date:   3-31-20
    
    
    Function List
@@ -66,4 +66,8 @@ function showList(list) {
    htmlCode += "</ul>";
 
    return htmlCode;
+}
+
+function insertContent(){
+    
 }
